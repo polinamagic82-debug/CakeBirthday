@@ -1,0 +1,389 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Cake Animation</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: radial-gradient(
+        circle at center,
+        #241044,
+        #10051e 70%,
+        #080312
+    );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Georgia, serif;
+}
+
+.scene {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Заголовок */
+
+.title {
+    position: absolute;
+    top: 8%;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+    animation: fadeIn 2s ease;
+}
+
+/* Звёзды */
+
+.stars {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 8px #fff;
+    animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+    from {
+        opacity: 0.2;
+        transform: scale(0.6);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+/* Торт */
+
+.cake {
+    position: relative;
+    margin-top: 30px;
+    width: 150px;
+    height: 120px;
+    animation: cakeAppear 2s ease-out forwards;
+}
+
+@keyframes cakeAppear {
+    from {
+        opacity: 0;
+        transform: translateY(150px) scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Нижний слой */
+
+.layer-bottom {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 130px;
+    height: 35px;
+    background: #e83d70;
+    border: 3px solid #ffb3d0;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px #ff397c66;
+}
+
+/* Верхний слой */
+
+.layer-top {
+    position: absolute;
+    bottom: 45px;
+    left: 25px;
+    width: 100px;
+    height: 28px;
+    background: #ff8db5;
+    border: 3px solid #ffd0e1;
+    border-radius: 5px;
+}
+
+/* Крем */
+
+.cream {
+    position: absolute;
+    bottom: 67px;
+    left: 23px;
+    width: 104px;
+    height: 12px;
+    background: #fff0f5;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #ffb6d2;
+}
+
+/* Свеча */
+
+.candle {
+    position: absolute;
+    bottom: 79px;
+    left: 70px;
+    width: 10px;
+    height: 40px;
+    background: repeating-linear-gradient(
+        45deg,
+        #fff 0px,
+        #fff 5px,
+        #ff4d83 5px,
+        #ff4d83 9px
+    );
+    border-radius: 3px;
+}
+
+/* Фитиль */
+
+.wick {
+    position: absolute;
+    bottom: 119px;
+    left: 74px;
+    width: 2px;
+    height: 7px;
+    background: #222;
+}
+
+/* Пламя */
+
+.flame {
+    position: absolute;
+    bottom: 125px;
+    left: 65px;
+    width: 20px;
+    height: 28px;
+    background: radial-gradient(
+        ellipse at center,
+        #fff 5%,
+        #fff36b 30%,
+        #ff9b00 65%,
+        transparent 75%
+    );
+    border-radius: 50% 50% 45% 45%;
+    filter: drop-shadow(0 0 10px #ffcc00);
+    animation: flicker 0.25s infinite alternate;
+    transform-origin: bottom center;
+}
+
+@keyframes flicker {
+    from {
+        transform: rotate(-7deg) scale(0.9);
+        opacity: 0.8;
+    }
+    to {
+        transform: rotate(7deg) scale(1.1);
+        opacity: 1;
+    }
+}
+
+/* Свечение под тортом */
+
+.glow {
+    position: absolute;
+    width: 190px;
+    height: 30px;
+    background: #ff3d8b;
+    filter: blur(35px);
+    bottom: -5px;
+    left: -20px;
+    opacity: 0.5;
+}
+
+/* Поздравление */
+
+.message {
+    margin-top: 45px;
+    color: #ff91c5;
+    font-size: clamp(22px, 5vw, 38px);
+    font-style: italic;
+    font-weight: bold;
+    text-align: center;
+    opacity: 0;
+    animation: messageAppear 2s ease 3s forwards;
+    text-shadow:
+        0 0 5px #ff72bd,
+        0 0 15px #ff4caa,
+        0 0 30px #ff168c;
+}
+
+@keyframes messageAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Конфетти */
+
+.confetti {
+    position: absolute;
+    top: -20px;
+    width: 5px;
+    height: 8px;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Плавающие блёстки */
+
+.sparkle {
+    position: absolute;
+    color: #ffb6dc;
+    font-size: 16px;
+    animation: float 3s infinite ease-in-out;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translateY(-20px);
+        opacity: 1;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="scene">
+
+    <div class="title">Birthday Cake Animation</div>
+
+    <div class="stars" id="stars"></div>
+
+    <div class="cake">
+
+        <div class="glow"></div>
+
+        <div class="layer-bottom"></div>
+        <div class="layer-top"></div>
+        <div class="cream"></div>
+
+        <div class="candle"></div>
+        <div class="wick"></div>
+        <div class="flame"></div>
+
+    </div>
+
+    <div class="message">
+        Happy Birthday my Love!
+    </div>
+
+</div>
+
+<script>
+
+// Создание звёздного неба
+
+const stars = document.getElementById("stars");
+
+for (let i = 0; i < 100; i++) {
+
+    const star = document.createElement("div");
+
+    star.className = "star";
+
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+
+    star.style.animationDelay = Math.random() * 3 + "s";
+
+    stars.appendChild(star);
+}
+
+// Создание конфетти
+
+const colors = [
+    "#ff4d94",
+    "#ffd700",
+    "#ffffff",
+    "#ff85c1",
+    "#a78bfa"
+];
+
+for (let i = 0; i < 45; i++) {
+
+    const confetti = document.createElement("div");
+
+    confetti.className = "confetti";
+
+    confetti.style.left = Math.random() * 100 + "%";
+
+    confetti.style.background =
+        colors[Math.floor(Math.random() * colors.length)];
+
+    confetti.style.animationDuration =
+        (3 + Math.random() * 5) + "s";
+
+    confetti.style.animationDelay =
+        Math.random() * 5 + "s";
+
+    document.querySelector(".scene").appendChild(confetti);
+}
+
+// Создание блёсток
+
+for (let i = 0; i < 15; i++) {
+
+    const sparkle = document.createElement("div");
+
+    sparkle.className = "sparkle";
+    sparkle.innerHTML = "✦";
+
+    sparkle.style.left = Math.random() * 100 + "%";
+    sparkle.style.top = Math.random() * 100 + "%";
+
+    sparkle.style.animationDelay =
+        Math.random() * 3 + "s";
+
+    document.querySelector(".scene").appendChild(sparkle);
+}
+
+</script>
+
+</body>
+</html>
