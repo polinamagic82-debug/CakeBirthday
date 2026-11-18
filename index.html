@@ -1,339 +1,323 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>С днём рождения!</title>
+ <!DOCTYPE html>  <html lang="ru">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>С днём рождения!</title>  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">  <style>  
+* {  
+    margin: 0;  
+    padding: 0;  
+    box-sizing: border-box;  
+}  
+  
+body {  
+    width: 100%;  
+    height: 100vh;  
+    overflow: hidden;  
+    background: radial-gradient(ellipse at center, #17102e 0%, #09051c 100%);  
+    display: flex;  
+    justify-content: center;  
+    align-items: center;  
+}  
+  
+.scene {  
+    width: 100%;  
+    height: 100%;  
+    position: relative;  
+    overflow: hidden;  
+}  
+  
+/* Звёзды */  
+  
+.stars {  
+    position: absolute;  
+    width: 100%;  
+    height: 100%;  
+}  
+  
+.star {  
+    position: absolute;  
+    border-radius: 50%;  
+    animation: twinkle 2s infinite alternate;  
+}  
+  
+@keyframes twinkle {  
+    from {  
+        opacity: 0.2;  
+        transform: scale(0.7);  
+    }  
+    to {  
+        opacity: 1;  
+        transform: scale(1.4);  
+    }  
+}  
+  
+/* Торт */  
+  
+.cake {  
+    position: absolute;  
+    left: 50%;  
+    top: 48%;  
+    transform: translate(-50%, -50%);  
+    width: 150px;  
+    height: 120px;  
+    animation: cakeAppear 5s ease forwards;  
+}  
+  
+@keyframes cakeAppear {  
+    0% { opacity: 0; }  
+    35% { opacity: 0; }  
+    55% { opacity: 1; }  
+    100% { opacity: 1; }  
+}  
+  
+.plate {  
+    position: absolute;  
+    width: 155px;  
+    height: 3px;  
+    background: #fff;  
+    bottom: 0;  
+    left: -2px;  
+    box-shadow: 0 0 8px white;  
+}  
+  
+.bottom-layer {  
+    position: absolute;  
+    width: 145px;  
+    height: 35px;  
+    bottom: 5px;  
+    left: 3px;  
+    background: #b74653;  
+    border-top: 6px solid #ff8eaa;  
+    border-bottom: 5px solid #f5d5d5;  
+    box-shadow: 0 0 12px #ff668b;  
+    animation: layerAppear 1s 1s both;  
+}  
+  
+.middle-layer {  
+    position: absolute;  
+    width: 135px;  
+    height: 27px;  
+    bottom: 40px;  
+    left: 8px;  
+    background: #e65d75;  
+    border-top: 5px solid #ffb6c9;  
+    animation: layerAppear 1s 2s both;  
+}  
+  
+.cream {  
+    position: absolute;  
+    width: 140px;  
+    height: 12px;  
+    background: #fff4e8;  
+    bottom: 65px;  
+    left: 5px;  
+    border-radius: 5px;  
+    box-shadow: 0 0 8px white;  
+    animation: layerAppear 1s 2.5s both;  
+}  
+  
+.cream::after {  
+    content: "";  
+    position: absolute;  
+    left: 10px;  
+    top: 5px;  
+    width: 12px;  
+    height: 13px;  
+    background: #fff4e8;  
+    border-radius: 0 0 10px 10px;  
+    box-shadow:  
+        35px 0 #fff4e8,  
+        70px 0 #fff4e8,  
+        105px 0 #fff4e8;  
+}  
+  
+@keyframes layerAppear {  
+    from {  
+        opacity: 0;  
+        transform: translateY(-20px);  
+    }  
+    to {  
+        opacity: 1;  
+        transform: translateY(0);  
+    }  
+}  
+  
+/* Свеча */  
+  
+.candle {  
+    position: absolute;  
+    width: 15px;  
+    height: 48px;  
+    background: repeating-linear-gradient(  
+        135deg,  
+        #ff426d 0px,  
+        #ff426d 7px,  
+        white 7px,  
+        white 10px  
+    );  
+    bottom: 77px;  
+    left: 67px;  
+    border-radius: 3px;  
+    opacity: 0;  
+    animation: candleAppear 1s 4s forwards;  
+}  
+  
+@keyframes candleAppear {  
+    to { opacity: 1; }  
+}  
+  
+/* Пламя */  
+  
+.flame {  
+    position: absolute;  
+    width: 15px;  
+    height: 23px;  
+    background: radial-gradient(  
+        ellipse at center,  
+        #fff9a0 0%,  
+        #ffcf35 45%,  
+        #ff7800 100%  
+    );  
+    border-radius: 50% 50% 45% 45%;  
+    top: -24px;  
+    left: 0;  
+    box-shadow:  
+        0 0 10px #ffdb40,  
+        0 0 25px #ff9900,  
+        0 0 45px #ffb300;  
+    animation: flameMove 0.3s infinite alternate;  
+}  
+  
+@keyframes flameMove {  
+    from {  
+        transform: scale(1) rotate(-5deg);  
+    }  
+    to {  
+        transform: scale(1.15) rotate(5deg);  
+    }  
+}  
+  
+/* Поздравление */  
+  
+.message {  
+    position: absolute;  
+    top: 65%;  
+    left: 50%;  
+    transform: translateX(-50%);  
+    width: 100%;  
+    text-align: center;  
+    color: #ffb3d1;  
+    font-family: 'Great Vibes', cursive;  
+    font-size: clamp(38px, 7vw, 65px);  
+    white-space: nowrap;  
+    opacity: 0;  
+    animation: textAppear 3s 5s forwards;  
+    text-shadow:  
+        0 0 5px #ff80b5,  
+        0 0 15px #ff4e9a,  
+        0 0 30px #ff1685;  
+}  
+  
+@keyframes textAppear {  
+    0% {  
+        opacity: 0;  
+        letter-spacing: 8px;  
+        filter: blur(10px);  
+    }  
+    100% {  
+        opacity: 1;  
+        letter-spacing: 1px;  
+        filter: blur(0);  
+    }  
+}  
+  
+/* Праздничные искры */  
+  
+.sparkle {  
+    position: absolute;  
+    width: 5px;  
+    height: 5px;  
+    border-radius: 50%;  
+    background: #ff72b6;  
+    box-shadow: 0 0 10px currentColor;  
+    animation: sparkleMove 3s infinite ease-in-out;  
+}  
+  
+@keyframes sparkleMove {  
+    0%, 100% {  
+        opacity: 0;  
+        transform: scale(0);  
+    }  
+    50% {  
+        opacity: 1;  
+        transform: scale(2);  
+    }  
+}  
+</style>  </head>  <body>  <div class="scene">  <div class="stars" id="stars"></div>  
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+<div class="cake">  
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    <div class="plate"></div>  
 
-body {
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    background: radial-gradient(ellipse at center, #17102e 0%, #09051c 100%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    <div class="bottom-layer"></div>  
 
-.scene {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    overflow: hidden;
-}
+    <div class="middle-layer"></div>  
 
-/* Звёзды */
+    <div class="cream"></div>  
 
-.stars {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
+    <div class="candle">  
+        <div class="flame"></div>  
+    </div>  
 
-.star {
-    position: absolute;
-    border-radius: 50%;
-    animation: twinkle 2s infinite alternate;
-}
+</div>  
 
-@keyframes twinkle {
-    from {
-        opacity: 0.2;
-        transform: scale(0.7);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1.4);
-    }
-}
-
-/* Торт */
-
-.cake {
-    position: absolute;
-    left: 50%;
-    top: 48%;
-    transform: translate(-50%, -50%);
-    width: 150px;
-    height: 120px;
-    animation: cakeAppear 5s ease forwards;
-}
-
-@keyframes cakeAppear {
-    0% { opacity: 0; }
-    35% { opacity: 0; }
-    55% { opacity: 1; }
-    100% { opacity: 1; }
-}
-
-.plate {
-    position: absolute;
-    width: 155px;
-    height: 3px;
-    background: #fff;
-    bottom: 0;
-    left: -2px;
-    box-shadow: 0 0 8px white;
-}
-
-.bottom-layer {
-    position: absolute;
-    width: 145px;
-    height: 35px;
-    bottom: 5px;
-    left: 3px;
-    background: #b74653;
-    border-top: 6px solid #ff8eaa;
-    border-bottom: 5px solid #f5d5d5;
-    box-shadow: 0 0 12px #ff668b;
-    animation: layerAppear 1s 1s both;
-}
-
-.middle-layer {
-    position: absolute;
-    width: 135px;
-    height: 27px;
-    bottom: 40px;
-    left: 8px;
-    background: #e65d75;
-    border-top: 5px solid #ffb6c9;
-    animation: layerAppear 1s 2s both;
-}
-
-.cream {
-    position: absolute;
-    width: 140px;
-    height: 12px;
-    background: #fff9ed;
-    bottom: 65px;
-    left: 5px;
-    border-radius: 5px;
-    box-shadow: 0 0 8px #fff9ed;
-    animation: layerAppear 1s 2.5s both;
-}
-
-.cream::after {
-    content: "";
-    position: absolute;
-    left: 10px;
-    top: 5px;
-    width: 12px;
-    height: 13px;
-    background: #fff9ed;
-    border-radius: 0 0 10px 10px;
-    box-shadow:
-        35px 0 #fff9ed,
-        70px 0 #fff9ed,
-        105px 0 #fff9ed;
-}
-
-@keyframes layerAppear {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Свеча */
-
-.candle {
-    position: absolute;
-    width: 15px;
-    height: 48px;
-    background: repeating-linear-gradient(
-        135deg,
-        #fff0f5 0px,
-        #fffof5 7px,
-        #ffffff 7px,
-        #ffffff 10px
-    );
-    bottom: 77px;
-    left: 67px;
-    border-radius: 3px;
-    opacity: 0;
-    animation: candleAppear 1s 4s forwards;
-}
-
-@keyframes candleAppear {
-    to { opacity: 1; }
-}
-
-/* Пламя */
-
-.flame {
-    position: absolute;
-    width: 15px;
-    height: 23px;
-    background: radial-gradient(
-        ellipse at center,
-        #fff9a0 0%,
-        #ffcf35 45%,
-        #ff7800 100%
-    );
-    border-radius: 50% 50% 45% 45%;
-    top: -24px;
-    left: 0;
-    box-shadow:
-        0 0 10px #ffdb40,
-        0 0 25px #ff9900,
-        0 0 45px #ffb300;
-    animation: flameMove 0.3s infinite alternate;
-}
-
-@keyframes flameMove {
-    from {
-        transform: scale(1) rotate(-5deg);
-    }
-    to {
-        transform: scale(1.15) rotate(5deg);
-    }
-}
-
-/* Поздравление */
-
-.message {
-    position: absolute;
-    top: 65%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    text-align: center;
-    color: #ffb3d1;
-    font-family: 'Great Vibes', cursive;
-    font-size: clamp(38px, 7vw, 65px);
-    white-space: nowrap;
-    opacity: 0;
-    animation: textAppear 3s 5s forwards;
-    text-shadow:
-        0 0 5px #ff80b5,
-        0 0 15px #ff4e9a,
-        0 0 30px #ff1685;
-}
-
-@keyframes textAppear {
-    0% {
-        opacity: 0;
-        letter-spacing: 8px;
-        filter: blur(10px);
-    }
-    100% {
-        opacity: 1;
-        letter-spacing: 1px;
-        filter: blur(0);
-    }
-}
-
-/* Праздничные искры */
-
-.sparkle {
-    position: absolute;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: #ff72b6;
-    box-shadow: 0 0 10px currentColor;
-    animation: sparkleMove 3s infinite ease-in-out;
-}
-
-@keyframes sparkleMove {
-    0%, 100% {
-        opacity: 0;
-        transform: scale(0);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(2);
-    }
-}
-</style>
-</head>
-
-<body>
-
-<div class="scene">
-
-    <div class="stars" id="stars"></div>
-
-    <div class="cake">
-
-        <div class="plate"></div>
-
-        <div class="bottom-layer"></div>
-
-        <div class="middle-layer"></div>
-
-        <div class="cream"></div>
-
-        <div class="candle">
-            <div class="flame"></div>
-        </div>
-
-    </div>
-
-    <div class="message">
-        С днём рождения!
-    </div>
-
+<div class="message">  
+    С днём рождения!  
 </div>
 
-<script>
-
-// Создание звёзд
-const stars = document.getElementById("stars");
-
-for (let i = 0; i < 100; i++) {
-    const star = document.createElement("div");
-    star.className = "star";
-
-    const size = Math.random() * 5 + 2;
-
-    star.style.width = size + "px";
-    star.style.height = size + "px";
-    star.style.left = Math.random() * 100 + "%";
-    star.style.top = Math.random() * 100 + "%";
-
-    const colors = [
-        "#ffffff",
-        "#ff69a6",
-        "#ffe45c",
-        "#b7a4ff",
-        "#ff9dca"
-    ];
-
-    star.style.background =
-        colors[Math.floor(Math.random() * colors.length)];
-
-    star.style.animationDelay = Math.random() * 3 + "s";
-
-    stars.appendChild(star);
-}
-
-// Создание праздничных искр
-for (let i = 0; i < 35; i++) {
-    const sparkle = document.createElement("div");
-    sparkle.className = "sparkle";
-
-    sparkle.style.left = Math.random() * 100 + "%";
-    sparkle.style.top = Math.random() * 100 + "%";
-    sparkle.style.animationDelay = Math.random() * 4 + "s";
-
-    document.querySelector(".scene").appendChild(sparkle);
-}
-
-</script>
-
-</body>
-</html>
+</div>  <script>  
+  
+// Создание звёзд  
+const stars = document.getElementById("stars");  
+  
+for (let i = 0; i < 100; i++) {  
+    const star = document.createElement("div");  
+    star.className = "star";  
+  
+    const size = Math.random() * 5 + 2;  
+  
+    star.style.width = size + "px";  
+    star.style.height = size + "px";  
+    star.style.left = Math.random() * 100 + "%";  
+    star.style.top = Math.random() * 100 + "%";  
+  
+    const colors = [  
+        "#ffffff",  
+        "#ff69a6",  
+        "#ffe45c",  
+        "#b7a4ff",  
+        "#ff9dca"  
+    ];  
+  
+    star.style.background =  
+        colors[Math.floor(Math.random() * colors.length)];  
+  
+    star.style.animationDelay = Math.random() * 3 + "s";  
+  
+    stars.appendChild(star);  
+}  
+  
+// Создание праздничных искр  
+for (let i = 0; i < 35; i++) {  
+    const sparkle = document.createElement("div");  
+    sparkle.className = "sparkle";  
+  
+    sparkle.style.left = Math.random() * 100 + "%";  
+    sparkle.style.top = Math.random() * 100 + "%";  
+    sparkle.style.animationDelay = Math.random() * 4 + "s";  
+  
+    document.querySelector(".scene").appendChild(sparkle);  
+}  
+  
+</script>  </body>  
+</html>  вот код, измени цвет глазури и сечения свечи на светлый цвет
